@@ -12,3 +12,6 @@ environment:
 
 dev_dependencies:
   lints: ^1.0.0
+
+dependencies: 
+  collection: ^1.15.0
