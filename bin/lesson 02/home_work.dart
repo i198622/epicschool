@@ -10,7 +10,12 @@
 
 String numeral(int count, List<String> variants) {
   // ваш код
-  return "";
+  if(count % 10 == 1 && count % 100 != 11)
+    return ('$count ${variants[0]}');
+  if(count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 > 20))
+    return ('$count ${variants[1]}');;
+  return ('$count ${variants[2]}');;
+  //return "";
 }
 
 /// 2-я функция ago, принимает 1 аргумент
@@ -33,10 +38,12 @@ String ago(DateTime date) {
 }
 
 void main(List<String> arguments) {
-  print(numeral(19, ['день', 'дня', 'дней']));
-  print(numeral(5, ['неделя', 'недели', 'недель']));
+  print(numeral(1, ['день', 'дня', 'дней']));
+  print(numeral(15, ['неделя', 'недели', 'недель']));
 
   print(ago(DateTime.parse('2016-02-27 13:27:00')));
   print(ago(DateTime.parse('2022-03-15 14:00:00')));
   print(ago(DateTime.parse('2022-03-20 19:00:00')));
+
+  print(DateTime.parse('2016-02-27 13:27:00'));
 }
