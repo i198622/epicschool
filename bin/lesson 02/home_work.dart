@@ -34,16 +34,40 @@ String numeral(int count, List<String> variants) {
 
 String ago(DateTime date) {
   // Ваш код
+  int month = DateTime.now().month;
+  int day = DateTime.now().day;
+  int hour = DateTime.now().hour;
+  int minute = DateTime.now().minute;
+  int second = DateTime.now().second;
+
+  int datemonth = date.month;
+  int dateday = date.day;
+  int datehour = date.hour;
+  int dateminute = date.minute;
+  int datesecond = date.second;
+
+
+
+  if ((month-datemonth)>=1)
+    return ('${numeral((month-datemonth), ['месяц', 'месяца', 'месяцев'])} назад');
+  if ((day-dateday)>=1)
+    return ('${numeral((day-dateday), ['день', 'дня', 'дней'])} назад');
+  if ((hour-datehour)>=1)
+    return ('${numeral((hour-datehour), ['час', 'часа', 'часов'])} назад');
+  if ((minute-dateminute)>=1)
+    return ('${numeral((minute-dateminute), ['минута', 'минуты', 'минут'])} назад');
+  if ((second-datesecond)>=1)
+    return ('${numeral((second-datesecond), ['секунда', 'секунды', 'секунд'])} назад');
   return "";
 }
 
 void main(List<String> arguments) {
-  print(numeral(3, ['день', 'дня', 'дней']));
+  print(numeral(1, ['день', 'дня', 'дней']));
   print(numeral(15, ['неделя', 'недели', 'недель']));
 
   print(ago(DateTime.parse('2016-02-27 13:27:00')));
   print(ago(DateTime.parse('2022-03-15 14:00:00')));
-  print(ago(DateTime.parse('2022-03-20 19:00:00')));
+  print(ago(DateTime.parse('2022-03-20 18:36:00')));
+  //print(DateTime.now().month.toInt()-DateTime.parse('2022-03-20 19:00:00').year);
 
-  print(DateTime.parse('2016-02-27 13:27:00'));
 }
