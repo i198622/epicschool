@@ -68,6 +68,6 @@ void main(List<String> arguments) {
   print(ago(DateTime.parse('2016-02-27 13:27:00')));
   print(ago(DateTime.parse('2022-03-15 14:00:00')));
   print(ago(DateTime.parse('2022-03-20 18:36:00')));
-  //print(DateTime.now().month.toInt()-DateTime.parse('2022-03-20 19:00:00').year);
+ 
 
 }
