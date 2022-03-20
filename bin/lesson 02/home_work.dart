@@ -38,7 +38,7 @@ String ago(DateTime date) {
 }
 
 void main(List<String> arguments) {
-  print(numeral(1, ['день', 'дня', 'дней']));
+  print(numeral(3, ['день', 'дня', 'дней']));
   print(numeral(15, ['неделя', 'недели', 'недель']));
 
   print(ago(DateTime.parse('2016-02-27 13:27:00')));
