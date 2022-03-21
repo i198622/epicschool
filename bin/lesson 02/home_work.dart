@@ -10,8 +10,18 @@
 
 String numeral(int count, List<String> variants) {
   // ваш код
-  return "";
-}
+ final last = count%10;
+ final prev = (count/10).floor()%10;
+  
+  if (last==1 && prev!=1) {
+    return "$count ${variants[0]}";
+  } else if ((last>=2 && last<=4) && prev!=1) {
+    return "$count ${variants[1]}";
+  } else {
+    return "$count ${variants[2]}";
+  }
+     
+  
 
 /// 2-я функция ago, принимает 1 аргумент
 /// - DateTime date — метка даты и времени
@@ -29,7 +39,25 @@ String numeral(int count, List<String> variants) {
 
 String ago(DateTime date) {
   // Ваш код
-  return "";
+  final DateTime now = DateTime.now();
+  final duration=now.difference(date); 
+
+   
+  if (duration.inMinutes<0) 
+    return "Online";
+  else if (duration.inMinutes<60)
+    return numeral(duration.inMinutes, ['минута', 'минуты', 'минут'])+" назад";
+  else if (duration.inHours<24)
+    return numeral(duration.inHours, ['час', 'часа', 'часов'])+" назад";
+  else if (duration.inDays>=1 && duration.inDays<=7)
+    return numeral(duration.inDays, ['день', 'дня', 'дней'])+" назад";
+  else if(duration.inDays>7 && duration.inDays<=28)
+    return numeral((duration.inDays/7).floor(), ['неделя', 'недели', 'недель'])+" назад";
+  //месяцы
+ else if(duration.inDays>28 && duration.inDays<=365)
+  return numeral((duration.inDays/28).floor(), ['месяц', 'месяца', 'месяцев'])+" назад";
+  //минуты и часы
+  else return numeral(now.year-date.year, ['год', 'года', 'лет'])+" назад";
 }
 
 void main(List<String> arguments) {
