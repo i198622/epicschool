@@ -8,6 +8,11 @@
 
 pyramid(int n) {
   // ваш код
+  final list = [];
+  for (int i = 1; i <= n; i++) {
+    list.add(List.filled(i, 1));
+  }
+  print(list);
 }
 
 // Напишите функцию, которая получает массив чисел и возвращаете сумму всех положительных.
@@ -15,10 +20,11 @@ pyramid(int n) {
 // [1,-4,7,12] => 1 + 7 + 12 = 20
 
 sumOfPositive(List<int> nums) {
-  // Ваш код
+  print(nums
+      .reduce((value, element) => value + (!element.isNegative ? element : 0)));
 }
 
 void main(List<String> arguments) {
-  pyramid(10);
+  pyramid(3);
   sumOfPositive([10, -2, 30, 2]);
 }
