@@ -9,8 +9,22 @@
 /// OUT: '3 дня'
 
 String numeral(int count, List<String> variants) {
-  // ваш код
-  return "";
+  int index = 0;
+  int lastTwoDigits = count%100;
+  // check for 11-14
+  if (lastTwoDigits > 10 && lastTwoDigits < 15) {
+    index = 2;
+  } else {
+    var lastDigit = count % 10;
+    if (lastDigit == 0 || (lastDigit >= 5 && lastDigit <= 9)) {
+      index = 2;
+    } else if (lastDigit == 1) {
+      index = 0;
+    } else if (lastDigit >= 2 && lastDigit <= 4) {
+      index = 1;
+    }
+  }
+  return "$count ${variants[index]}";
 }
 
 /// 2-я функция ago, принимает 1 аргумент
