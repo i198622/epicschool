@@ -42,8 +42,21 @@ String numeral(int count, List<String> variants) {
 /// OUT: '10 минут назад'
 
 String ago(DateTime date) {
-  // Ваш код
-  return "";
+  DateTime now = DateTime.now();
+  Duration difference = now.difference(date).abs();
+  String str = "";
+  if (difference.inDays >= 7 * 4) {
+    str = numeral(difference.inDays/7~/4, ['месяц', 'месяца', 'месяцев']);
+  } else if (difference.inDays >= 7) {
+    str = numeral(difference.inDays~/7, ['неделя', 'недели', 'недель']);
+  } else if (difference.inDays >= 1) {
+    str = numeral(difference.inDays, ['день', 'дня', 'дней']);
+  } else if (difference.inHours >= 1) {
+    str = numeral(difference.inHours, ['час', 'часа', 'часов']);
+  } else if (difference.inMinutes >= 1) {
+    str = numeral(difference.inMinutes/7~/4, ['минута', 'минуты', 'минут']);
+  }
+  return date.isAfter(now) ? "Через $str" : "$str назад";
 }
 
 void main(List<String> arguments) {
