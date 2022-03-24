@@ -7,7 +7,12 @@
 // pyramid(3) => [ [1], [1, 1], [1, 1, 1] ]
 
 pyramid(int n) {
-  // ваш код
+  List<List<int>> resultList = [];
+  for (var i = 1; i <= n; i++) {
+    final innerList = List<int>.filled(i, 1);
+    resultList.add(innerList);
+  }
+  return resultList;
 }
 
 // Напишите функцию, которая получает массив чисел и возвращаете сумму всех положительных.
@@ -15,7 +20,12 @@ pyramid(int n) {
 // [1,-4,7,12] => 1 + 7 + 12 = 20
 
 sumOfPositive(List<int> nums) {
-  // Ваш код
+  return nums.fold<int>(0, (accum, element) {
+    if (element > 0) {
+      return accum + element;
+    }
+    return accum;
+  });
 }
 
 void main(List<String> arguments) {
