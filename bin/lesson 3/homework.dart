@@ -8,7 +8,7 @@
 
 List<List> pyramid(int n) {
   final myList = <List>[];
-  for (var i = 0; i < n; i++) {
+  for (var i = 0; i <= n; i++) {
     var newList = List<int>.filled(i, 1);
     myList.add(newList);
   }
@@ -21,12 +21,18 @@ List<List> pyramid(int n) {
 
 int sumOfPositive(List<int> nums) {
   nums.removeWhere((element) => element < 0);
-  return nums.reduce((value, element) => value + element);
+  if (nums.isNotEmpty) {
+    return nums.reduce((value, element) => value + element);
+  } else {
+    return 0;
+  }
 }
 
 void main(List<String> arguments) {
-  pyramid(10).forEach((element) {
+  pyramid(4).forEach((element) {
     print(element);
   });
+  print(sumOfPositive([]));
+  print(sumOfPositive([-2]));
   print(sumOfPositive([10, -2, 30, 2]));
 }
