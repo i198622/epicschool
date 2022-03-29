@@ -21,11 +21,11 @@ String numeral(int count, List<String> variants) {
     throw Exception('Russian locale requires 3 variants');
   }
   if (count % 10 == 1 && count % 100 != 11) {
-    return variants[0];
+    return count.toString() + ' ' + variants[0];
   } else if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) {
-    return variants[1];
+    return count.toString() + ' ' + variants[1];
   } else {
-    return variants[2];
+    return count.toString() + ' ' + variants[2];
   }
 }
 
@@ -43,8 +43,8 @@ String numeral(int count, List<String> variants) {
 /// IN: DateTime.now().subtract(Duration(minutes: 10)
 /// OUT: '10 минут назад'
 
-String formatter(int count, String plural) {
-  return count.toString() + " " + plural + " назад";
+String formatter(String plural) {
+  return plural + " назад";
 }
 
 String ago(DateTime date) {
@@ -52,16 +52,16 @@ String ago(DateTime date) {
   final diff = currentDate.difference(date);
   if (diff.inDays > 30) {
     final monthsCount = diff.inDays ~/ 30;
-    return formatter(monthsCount, numeral(monthsCount, ['месяц', 'месяца', 'месяцев']));
+    return formatter(numeral(monthsCount, ['месяц', 'месяца', 'месяцев']));
   } else if (diff.inDays > 7) {
     final weeksCount = diff.inDays ~/ 7;
-    return formatter(weeksCount, numeral(weeksCount, ['неделя', 'недели', 'недель']));
+    return formatter(numeral(weeksCount, ['неделя', 'недели', 'недель']));
   } else if (diff.inDays > 1) {
-    return formatter(diff.inDays, numeral(diff.inDays, ['день', 'дня', 'дней']));
+    return formatter(numeral(diff.inDays, ['день', 'дня', 'дней']));
   } else if (diff.inHours > 1) {
-    return formatter(diff.inHours, numeral(diff.inHours, ['час', 'часа', 'часов']));
+    return formatter(numeral(diff.inHours, ['час', 'часа', 'часов']));
   } else {
-    return formatter(diff.inMinutes, numeral(diff.inMinutes, ['минута', 'минуты', 'минут']));
+    return formatter(numeral(diff.inMinutes, ['минута', 'минуты', 'минут']));
   }
 }
 
