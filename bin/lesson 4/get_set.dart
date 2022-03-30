@@ -1,17 +1,30 @@
+// 1. Getter, setter
+
 void main(List<String> arguments) {
-  var me = Profile(birthDate: DateTime(2020), name: 'John');
-  // me.age = 1;
-  print(me.isAdult);
+  Profile p = Profile(firstName: "Test name", lastName: "Test lastname", email: "");
+  // print(p.email);
 }
 
 /// Геттеры и сеттеры
 class Profile { 
-  final String name;
-  DateTime birthDate;
+  final String firstName;
+  final String lastName;
+  // String? _email;
 
-  Profile({ required this.name, required this.birthDate });
+  Profile({
+    required this.firstName,
+    required this.lastName,
+    required String email,
+  }) {
+    // this.email = email;
+  }
 
-  bool get isAdult => (DateTime.now().year - birthDate.year) > 18;
+  String getFullName() => '$firstName $lastName';
+  String get fullName => '$firstName $lastName';
 
-  set age(int val) => birthDate = DateTime((DateTime.now().year - val));
+  // set email(String value) {
+  //   _email = value.contains('@') ? value : null;
+  // }
+
+  // String get email => _email ?? 'no email';
 }  
