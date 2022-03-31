@@ -35,4 +35,3 @@ class Student {
     return '${firstName[0].toUpperCase()}${firstName.substring(1).toLowerCase()} ${lastName[0].toUpperCase()}${lastName.substring(1).toLowerCase()}';
   }
 }
-
