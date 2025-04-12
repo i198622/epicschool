@@ -1,98 +1,114 @@
-void main(List<String> arguments) {
-  // var me = Profile();
-  // print(me.fullName());
+import 'dart:math';
+// 1. Объявление класса
+// 2. Приватные свойства / методы
+// 3. Конструкторы
+// 4. Статические методы
+// 5. Абстрактный класс
+// 6. Callable classes
+// 7. runtimeType
 
-  // print('Тип: ${me.runtimeType}');
-}
+// void main(List<String> arguments) {
+//   // var me = Profile();
+//   // print(me.fullName());
+
+//   // print('Тип: ${me.runtimeType}');
+// }
 
 // Объявление класса
 // class Profile {  
 //   String name = "John";
 //   String lastName = "Doe";
-  
-//   // Приватное свойство
-//   // int _age = 0;
    
 //   String fullName() {
 //     return '$name $lastName';
 //   }
+// }
 
-//   // Приватный метод
-//   // int _getAge() {
-//   //   return _age;
-//   // }
+
+// Приватные свойства / методы
+// class Profile {  
+//   String name = "John";
+//   int _age = 0;
+
+//   int _getAge() {
+//     return _age;
+//   }
 // }
 
 
 // Объявление класса c конструктором
 // class Profile {  
-//   final String name;
-//   final String lastName;
+//   String name;
+//   String lastName;
 
-//   const Profile({ required this.name, required this.lastName });
-//   const Profile.admin({ required this.name, required this.lastName });
-   
-//   String fullName() {
-//     return '$name $lastName';
-//   }
+//   Profile(this.name, this.lastName);
+//   Profile.named({ required this.name, required this.lastName });
 // }
 
-
-// Factory
 // class Profile {  
-//   final String name;
-//   final String lastName;
-//   final String role;
+//   late String name;
 
-//   Profile({ required this.name, required this.lastName, this.role = 'user' });
+//   Profile({ required String firstName, required String lastName }) {
+//     name = '$firstName $lastName';
+//   }
 
-//   factory Profile.admin({ required name, required lastName }) {
-//     return Profile(name: name, lastName: lastName, role: 'admin');
-//   }
-   
-//   String fullName() {
-//     return '$name $lastName: $role';
-//   }
+//   // Profile({ required String firstName, required String lastName }): name = '$firstName $lastName';
 // }
+
+// class Profile {  
+//   final String token;
+
+//   const Profile({ required this.token });
+// }
+
 
 // Статические методы
-// class Profile {  
-//   final String name;
-//   final String lastName;
-//   final String _role;
+// class Point {  
+//   double x, y;
+//   Point(this.x, this.y);
 
-//   const Profile({ required this.name, required this.lastName }): _role = 'user';
-//   const Profile.admin({ required this.name, required this.lastName }): _role = 'admin';
-   
-//   String fullName() {
-//     count += 1;
-//     return '$name $lastName';
-//   }
-
-//   String getRole() {
-//     return _role;
-//   }
-
-//   static int count = 0;
-//   static int staticMethod() {
-//     return count;
+//   static double distanceBetween(Point a, Point b) {
+//     var dx = a.x - b.x;
+//     var dy = a.y - b.y;
+//     return sqrt(dx * dx + dy * dy);
 //   }
 // }
 
+// main() {
+//   Point a = Point(2, 2);
+//   Point b = Point(2, 2);
+//   print(Point.distanceBetween(a, b));
+// }
+
+// DART data class extension
+// class User {
+//   final String name;
+//   final String lastName;
+// }
 
 // Абстрактный класс
-// abstract class User {
+// abstract class BaseUser {
 //   String fullName();
 // }
 
-// class Profile implements User {
-//   final String name;
-//   final String lastName;
-
-//   Profile({ required this.name, required this.lastName});
+// class User implements BaseUser {
+//   User();
 
 //   @override
 //   String fullName() {
-//     return "$name $lastName";
+//     return "";
 //   }
+// }
+
+
+// Callable classes
+// class CallableClassFunction {
+//   String call(String a) => 'Welcome to $a!';
+// }
+  
+// // Main Function
+// void main() {
+//   var callClass = CallableClassFunction();
+//   var output = callClass('Flutter');
+//   print(output);
 // }
